@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using Mission06_Santilli.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//this is how we connect to the sqlite DB
+builder.Services.AddDbContext<MovieContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("MovieConnection")));
 
 var app = builder.Build();
 
