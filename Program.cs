@@ -1,37 +1,31 @@
 using Microsoft.EntityFrameworkCore;
-using Mission7.Models;
+using Mission7.Models; // Ensure this matches your namespace
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Register the mission7Context with SQLite
 builder.Services.AddDbContext<mission7Context>(options =>
 {
-    options.UseSqlite(builder.Configuration["ConnectionStrings:Connection"]);
+    // Ensure "MovieConnection" matches the name in your appsettings.json
+    options.UseSqlite(builder.Configuration.GetConnectionString("MovieConnection"));
 });
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+
 app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapStaticAssets();
-
+// This defines the default route pattern
 app.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
-
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

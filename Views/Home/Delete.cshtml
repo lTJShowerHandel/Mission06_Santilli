@@ -1,0 +1,15 @@
+﻿@model Application
+@{
+    ViewData["Title"] = "Delete Movie";
+}
+
+<div class="container mt-4 text-center">
+    <h2>Are you sure you want to delete "@Model.Title"?</h2>
+    <p class="text-danger">This action cannot be undone.</p>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="MovieId" />
+        <button type="submit" class="btn btn-danger">Yes, Delete It</button>
+        <a asp-action="MovieList" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

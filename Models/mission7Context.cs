@@ -8,5 +8,5 @@ public class mission7Context : DbContext
     {
     }
     
-    public DbSet<Application> Applications { get; set; }
+    public DbSet<Application> Movies { get; set; }
 }
