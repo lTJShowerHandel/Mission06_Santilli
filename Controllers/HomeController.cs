@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Mission7.Models; // Updated Namespace
+using Mission7.Models; 
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Mission7.Controllers;
 
@@ -19,13 +20,12 @@ public class HomeController : Controller
     public IActionResult MovieList()
     {
         var movies = _context.Movies
+            .Include(x => x.Category)
             .OrderBy(x => x.Title)
             .ToList();
         return View(movies);
     }
-
-    [HttpGet]
-    public IActionResult EnterMovie() => View("EnterMovie", new Application());
+    
 
     [HttpPost]
     public IActionResult EnterMovie(Application response)
@@ -36,16 +36,12 @@ public class HomeController : Controller
             _context.SaveChanges();
             return View("Confirmation", response);
         }
+    
+        // RE-FETCH CATEGORIES so the dropdown doesn't break if validation fails
+        ViewBag.Categories = _context.Categories.OrderBy(x => x.CategoryName).ToList();
         return View(response);
     }
-
-    // UPDATE: GET
-    [HttpGet]
-    public IActionResult Edit(int id)
-    {
-        var recordToEdit = _context.Movies.Single(x => x.MovieId == id);
-        return View("EnterMovie", recordToEdit); // Reuses the form view
-    }
+    
 
     // UPDATE: POST
     [HttpPost]
@@ -74,5 +70,26 @@ public class HomeController : Controller
         _context.Movies.Remove(mov);
         _context.SaveChanges();
         return RedirectToAction("MovieList");
+    }
+    
+    [HttpGet]
+    public IActionResult EnterMovie()
+    {
+        // Fetch categories from the DB to put in the dropdown
+        ViewBag.Categories = _context.Categories
+            .OrderBy(x => x.CategoryName)
+            .ToList();
+
+        return View("EnterMovie", new Application());
+    }
+    
+    [HttpGet]
+    public IActionResult Edit(int id)
+    {
+        ViewBag.Categories = _context.Categories.OrderBy(x => x.CategoryName).ToList();
+    
+        var recordToEdit = _context.Movies.Single(x => x.MovieId == id);
+    
+        return View("EnterMovie", recordToEdit);
     }
 }

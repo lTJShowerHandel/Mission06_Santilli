@@ -15,8 +15,14 @@
 
                 <div class="row mb-3">
                     <div class="col">
-                        <label asp-for="Category" class="form-label">Category</label>
-                        <input asp-for="Category" class="form-control" placeholder="e.g., Action" />
+                        <label asp-for="CategoryId" class="form-label">Category</label>
+                        <select asp-for="CategoryId" class="form-select" required>
+                            <option value="">Select a Category</option>
+                            @foreach (var c in ViewBag.Categories)
+                            {
+                                <option value="@c.CategoryId">@c.CategoryName</option>
+                            }
+                        </select>
                     </div>
                     <div class="col">
                         <label asp-for="Title" class="form-label">Title</label>
