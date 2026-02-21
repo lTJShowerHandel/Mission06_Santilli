@@ -2,5 +2,10 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../WebApp MVC Template" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../foodBank2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../mission6" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../mission6MVCTemp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../ticTactoe" vcs="Git" />
   </component>
 </project>

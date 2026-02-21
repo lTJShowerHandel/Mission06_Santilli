@@ -1,0 +1,10 @@
+/workspace/dotnet10/dotnet10/Mission7/obj/Debug/net10.0/Mission7.csproj.AssemblyReference.cache
+/workspace/dotnet10/dotnet10/Mission7/obj/Debug/net10.0/rpswa.dswa.cache.json
+/workspace/dotnet10/dotnet10/Mission7/obj/Debug/net10.0/Mission7.GeneratedMSBuildEditorConfig.editorconfig
+/workspace/dotnet10/dotnet10/Mission7/obj/Debug/net10.0/Mission7.AssemblyInfoInputs.cache
+/workspace/dotnet10/dotnet10/Mission7/obj/Debug/net10.0/Mission7.AssemblyInfo.cs
+/workspace/dotnet10/dotnet10/Mission7/obj/Debug/net10.0/Mission7.csproj.CoreCompileInputs.cache
+/workspace/dotnet10/dotnet10/Mission7/obj/Debug/net10.0/Mission7.MvcApplicationPartsAssemblyInfo.cache
+/workspace/dotnet10/dotnet10/Mission7/obj/Debug/net10.0/Mission7.RazorAssemblyInfo.cache
+/workspace/dotnet10/dotnet10/Mission7/obj/Debug/net10.0/Mission7.RazorAssemblyInfo.cs
+/workspace/dotnet10/dotnet10/Mission7/obj/Debug/net10.0/Mission7.sourcelink.json
