@@ -1,0 +1,42 @@
+@model List<Mission7.Models.Application>
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Joel Hilton's Film Collection</h2>
+    
+    <table class="table table-bordered table-striped shadow">
+        <thead class="table-dark">
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Year</th>
+            <th>Director</th>
+            <th>Rating</th>
+            <th>Edited</th>
+            <th>Plex</th>
+            <th>Lent To</th>
+            <th>Notes</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@m.Title</td>
+                <td>@m.Category?.CategoryName</td> @* Shows name instead of ID *@
+                <td>@m.Year</td>
+                <td>@m.Director</td>
+                <td>@m.Rating</td>
+                <td>@(m.Edited ? "Yes" : "No")</td>
+                <td>@(m.CopiedToPlex ? "Yes" : "No")</td>
+                <td>@m.LentTo</td>
+                <td>@m.Notes</td>
+                <td>
+                    <a class="btn btn-info btn-sm" asp-controller="Home" asp-action="Edit" asp-route-id="@m.MovieId">Edit</a>
+                    <a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="Delete" asp-route-id="@m.MovieId">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
